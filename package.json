@@ -2,7 +2,29 @@
   "name": "local-fub-mcp",
   "private": true,
   "type": "module",
-  "scripts": {"dev": "tsx src/index.ts", "build": "tsc", "start": "node dist/index.js"},
-  "dependencies": {"@modelcontextprotocol/sdk": "^1.30.0", "zod": "^4.4.3"},
-  "devDependencies": {"@types/node": "^22.20.0", "tsx": "^4.23.1", "typescript": "^5.9.3"}
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev:worker": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck:worker": "tsc -p tsconfig.worker.json"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261027.1",
+    "@types/node": "^22.20.0",
+    "tsx": "^4.23.1",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.154.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd"
+    ]
+  }
 }
